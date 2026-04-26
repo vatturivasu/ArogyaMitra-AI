@@ -1,7 +1,11 @@
+import sys
+import os
 from fastapi import FastAPI, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from fastapi.middleware.cors import CORSMiddleware
 import bcrypt
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 import models, schemas, database, ai_service
 from database import engine
