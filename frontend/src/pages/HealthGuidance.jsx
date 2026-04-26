@@ -75,7 +75,8 @@ const HealthGuidance = () => {
     setInputText('');
 
     try {
-      const res = await axios.post('http://localhost:8000/health-query', {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const res = await axios.post(`${apiUrl}/health-query`, {
         text: query,
         language: lang
       });
@@ -106,7 +107,8 @@ const HealthGuidance = () => {
         if (!chunk) continue;
         
         // We proxy the TTS request entirely through our own backend! This guarantees 100% success.
-        const audioUrl = `http://localhost:8000/tts?text=${encodeURIComponent(chunk)}&lang=${language}`;
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+        const audioUrl = `${apiUrl}/tts?text=${encodeURIComponent(chunk)}&lang=${language}`;
         const audio = new Audio(audioUrl);
         
         await new Promise((resolve) => {
