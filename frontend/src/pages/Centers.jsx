@@ -22,9 +22,9 @@ const Centers = () => {
       out center;
     `;
     
-    axios.post('https://overpass-api.de/api/interpreter', query, {
-      headers: { 'Content-Type': 'text/plain' }
-    }).then(res => {
+    const url = `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`;
+    
+    axios.get(url).then(res => {
       const elements = res.data.elements || [];
       const foundCenters = elements.map((el, idx) => {
         let address = [];
