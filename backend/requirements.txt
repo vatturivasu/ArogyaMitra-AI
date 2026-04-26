@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+bcrypt
+python-multipart
+openai
+langchain
+faiss-cpu
+SpeechRecognition
+pyttsx3
